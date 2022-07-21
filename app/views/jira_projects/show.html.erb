@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @jira_project.project_id %>
+</p>
+
+<p>
+  <strong>Jira project:</strong>
+  <%= @jira_project.jira_project_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @jira_project.name %>
+</p>
+
+<p>
+  <strong>Jira key:</strong>
+  <%= @jira_project.jira_key %>
+</p>
+
+<p>
+  <strong>Total issue count:</strong>
+  <%= @jira_project.total_issue_count %>
+</p>
+
+<p>
+  <strong>Last issue update:</strong>
+  <%= @jira_project.last_issue_update %>
+</p>
+
+<p>
+  <strong>Self url:</strong>
+  <%= @jira_project.self_url %>
+</p>
+
+<%= link_to 'Edit', edit_jira_project_path(@jira_project) %> |
+<%= link_to 'Back', jira_projects_path %>
