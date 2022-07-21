@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @role.name %>
+</p>
+
+<p>
+  <strong>Is shared:</strong>
+  <%= @role.is_shared %>
+</p>
+
+<p>
+  <strong>Is administration:</strong>
+  <%= @role.is_administration %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @role.department_id %>
+</p>
+
+<%= link_to 'Edit', edit_role_path(@role) %> |
+<%= link_to 'Back', roles_path %>
