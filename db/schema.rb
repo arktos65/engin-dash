@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_21_195402) do
+ActiveRecord::Schema.define(version: 2022_07_21_200050) do
 
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -53,6 +53,22 @@ ActiveRecord::Schema.define(version: 2022_07_21_195402) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_departments_on_user_id"
+  end
+
+  create_table "jira_issues", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "jira_issue_id"
+    t.bigint "jira_project_id", null: false
+    t.string "issue_key"
+    t.text "issue_url"
+    t.text "issue_title"
+    t.string "issue_status"
+    t.string "issue_type"
+    t.integer "story_points"
+    t.datetime "issue_created"
+    t.datetime "issue_updated"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["jira_project_id"], name: "index_jira_issues_on_jira_project_id"
   end
 
   create_table "jira_projects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -170,6 +186,7 @@ ActiveRecord::Schema.define(version: 2022_07_21_195402) do
   end
 
   add_foreign_key "departments", "users"
+  add_foreign_key "jira_issues", "jira_projects"
   add_foreign_key "jira_projects", "projects"
   add_foreign_key "members", "departments"
   add_foreign_key "members", "roles"

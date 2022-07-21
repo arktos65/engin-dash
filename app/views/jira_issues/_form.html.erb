@@ -1,0 +1,67 @@
+<%= form_with(model: jira_issue) do |form| %>
+  <% if jira_issue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(jira_issue.errors.count, "error") %> prohibited this jira_issue from being saved:</h2>
+
+      <ul>
+        <% jira_issue.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :jira_issue_id %>
+    <%= form.number_field :jira_issue_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :jira_project_id %>
+    <%= form.text_field :jira_project_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :issue_key %>
+    <%= form.text_field :issue_key %>
+  </div>
+
+  <div class="field">
+    <%= form.label :issue_url %>
+    <%= form.text_area :issue_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :issue_title %>
+    <%= form.text_area :issue_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :issue_status %>
+    <%= form.text_field :issue_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :issue_type %>
+    <%= form.text_field :issue_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :story_points %>
+    <%= form.number_field :story_points %>
+  </div>
+
+  <div class="field">
+    <%= form.label :issue_created %>
+    <%= form.datetime_select :issue_created %>
+  </div>
+
+  <div class="field">
+    <%= form.label :issue_updated %>
+    <%= form.datetime_select :issue_updated %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
