@@ -1,0 +1,37 @@
+<%= form_with(model: stream) do |form| %>
+  <% if stream.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(stream.errors.count, "error") %> prohibited this stream from being saved:</h2>
+
+      <ul>
+        <% stream.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :business_unit %>
+    <%= form.text_field :business_unit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stakeholder_name %>
+    <%= form.text_field :stakeholder_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stakeholder_email %>
+    <%= form.text_field :stakeholder_email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
