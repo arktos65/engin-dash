@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_21_193416) do
+ActiveRecord::Schema.define(version: 2022_07_21_193943) do
 
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -114,6 +114,22 @@ ActiveRecord::Schema.define(version: 2022_07_21_193416) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "teams", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "member_id", null: false
+    t.bigint "project_id", null: false
+    t.bigint "currency_id", null: false
+    t.decimal "annual_rate", precision: 10
+    t.decimal "weekly_rate", precision: 10
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "allocation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["currency_id"], name: "index_teams_on_currency_id"
+    t.index ["member_id"], name: "index_teams_on_member_id"
+    t.index ["project_id"], name: "index_teams_on_project_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -146,4 +162,7 @@ ActiveRecord::Schema.define(version: 2022_07_21_193416) do
   add_foreign_key "members", "sources"
   add_foreign_key "projects", "streams"
   add_foreign_key "roles", "departments"
+  add_foreign_key "teams", "currencies"
+  add_foreign_key "teams", "members"
+  add_foreign_key "teams", "projects"
 end

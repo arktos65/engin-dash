@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :teams
   resources :members
   resources :currencies
   resources :roles

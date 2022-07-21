@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @team.member_id %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @team.project_id %>
+</p>
+
+<p>
+  <strong>Currency:</strong>
+  <%= @team.currency_id %>
+</p>
+
+<p>
+  <strong>Annual rate:</strong>
+  <%= @team.annual_rate %>
+</p>
+
+<p>
+  <strong>Weekly rate:</strong>
+  <%= @team.weekly_rate %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @team.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @team.end_date %>
+</p>
+
+<p>
+  <strong>Allocation:</strong>
+  <%= @team.allocation %>
+</p>
+
+<%= link_to 'Edit', edit_team_path(@team) %> |
+<%= link_to 'Back', teams_path %>
