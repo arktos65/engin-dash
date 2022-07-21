@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :project do
-    stream { nil }
-    name { "MyString" }
+    stream_id { nil }
+    name { Faker::App.name }
     is_internal { false }
-    is_trackable { false }
-    start_date { "2022-07-21" }
-    end_date { "2022-07-21" }
-    is_active { false }
+    is_trackable { true }
+    start_date { Faker::Date.backward(days: 60) }
+    end_date { nil }
+    is_active { true }
   end
 end

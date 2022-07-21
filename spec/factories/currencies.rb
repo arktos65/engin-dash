@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :currency do
-    name { "MyString" }
-    code { "MyString" }
-    exchange_rate { "9.99" }
+    name { Faker::Currency.name }
+    code { Faker::Currency.code }
+    exchange_rate { Faker::Number.between(from: 1, to: 3) }
   end
 end
