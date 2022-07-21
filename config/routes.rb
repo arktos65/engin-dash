@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :roles
   resources :projects
   resources :streams
   resources :sources

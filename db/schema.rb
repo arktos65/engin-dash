@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_21_185837) do
+ActiveRecord::Schema.define(version: 2022_07_21_190224) do
 
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -58,6 +58,16 @@ ActiveRecord::Schema.define(version: 2022_07_21_185837) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["stream_id"], name: "index_projects_on_stream_id"
+  end
+
+  create_table "roles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_shared"
+    t.boolean "is_administration"
+    t.bigint "department_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["department_id"], name: "index_roles_on_department_id"
   end
 
   create_table "sources", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -108,4 +118,5 @@ ActiveRecord::Schema.define(version: 2022_07_21_185837) do
 
   add_foreign_key "departments", "users"
   add_foreign_key "projects", "streams"
+  add_foreign_key "roles", "departments"
 end
