@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :team do
-    member { nil }
-    project { nil }
-    currency { nil }
-    annual_rate { "9.99" }
-    weekly_rate { "9.99" }
-    start_date { "2022-07-21" }
-    end_date { "2022-07-21" }
-    allocation { 1 }
+    member_id { nil }
+    project_id { nil }
+    currency_id { nil }
+    annual_rate { Faker::Number.between(from: 80_000, to: 130_000) }
+    weekly_rate { nil }
+    start_date { Faker::Date.backward(days: 45) }
+    end_date { nil }
+    allocation { 100 }
   end
 end

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :role do
-    name { "MyString" }
+    name { Faker::Job.title }
     is_shared { false }
     is_administration { false }
-    department { nil }
+    department_id { nil }
   end
 end
