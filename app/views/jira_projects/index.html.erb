@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Jira Projects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th>Jira project</th>
+      <th>Name</th>
+      <th>Jira key</th>
+      <th>Total issue count</th>
+      <th>Last issue update</th>
+      <th>Self url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jira_projects.each do |jira_project| %>
+      <tr>
+        <td><%= jira_project.project_id %></td>
+        <td><%= jira_project.jira_project_id %></td>
+        <td><%= jira_project.name %></td>
+        <td><%= jira_project.jira_key %></td>
+        <td><%= jira_project.total_issue_count %></td>
+        <td><%= jira_project.last_issue_update %></td>
+        <td><%= jira_project.self_url %></td>
+        <td><%= link_to 'Show', jira_project %></td>
+        <td><%= link_to 'Edit', edit_jira_project_path(jira_project) %></td>
+        <td><%= link_to 'Destroy', jira_project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Jira Project', new_jira_project_path %>

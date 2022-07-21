@@ -1,0 +1,52 @@
+<%= form_with(model: jira_project) do |form| %>
+  <% if jira_project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(jira_project.errors.count, "error") %> prohibited this jira_project from being saved:</h2>
+
+      <ul>
+        <% jira_project.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :project_id %>
+    <%= form.text_field :project_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :jira_project_id %>
+    <%= form.number_field :jira_project_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_area :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :jira_key %>
+    <%= form.text_field :jira_key %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_issue_count %>
+    <%= form.number_field :total_issue_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_issue_update %>
+    <%= form.datetime_select :last_issue_update %>
+  </div>
+
+  <div class="field">
+    <%= form.label :self_url %>
+    <%= form.text_area :self_url %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

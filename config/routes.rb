@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :jira_projects
   resources :teams
   resources :members
   resources :currencies
