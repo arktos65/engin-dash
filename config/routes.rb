@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :currencies
   resources :roles
   resources :projects
   resources :streams
