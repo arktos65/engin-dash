@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Jira issue:</strong>
+  <%= @jira_issue.jira_issue_id %>
+</p>
+
+<p>
+  <strong>Jira project:</strong>
+  <%= @jira_issue.jira_project_id %>
+</p>
+
+<p>
+  <strong>Issue key:</strong>
+  <%= @jira_issue.issue_key %>
+</p>
+
+<p>
+  <strong>Issue url:</strong>
+  <%= @jira_issue.issue_url %>
+</p>
+
+<p>
+  <strong>Issue title:</strong>
+  <%= @jira_issue.issue_title %>
+</p>
+
+<p>
+  <strong>Issue status:</strong>
+  <%= @jira_issue.issue_status %>
+</p>
+
+<p>
+  <strong>Issue type:</strong>
+  <%= @jira_issue.issue_type %>
+</p>
+
+<p>
+  <strong>Story points:</strong>
+  <%= @jira_issue.story_points %>
+</p>
+
+<p>
+  <strong>Issue created:</strong>
+  <%= @jira_issue.issue_created %>
+</p>
+
+<p>
+  <strong>Issue updated:</strong>
+  <%= @jira_issue.issue_updated %>
+</p>
+
+<%= link_to 'Edit', edit_jira_issue_path(@jira_issue) %> |
+<%= link_to 'Back', jira_issues_path %>
