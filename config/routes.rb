@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/index'
   resources :jira_issues
   resources :jira_projects
   resources :teams
@@ -11,5 +12,7 @@ Rails.application.routes.draw do
   resources :departments
   devise_for :admins
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # Default landing page for this application
+  root to: "home#index"
 end
