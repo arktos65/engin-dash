@@ -1,9 +1,8 @@
 require 'jira-ruby'
 
 # Module: ProjectsLoader
-# Provides Jira project ETL processing from Jira API to EngIn database. This can
-# be manually run from the Rails console as needed to populate the jira_projects
-# database table.
+# ETL processor that extracts project data from a Jira API, transforms the
+# data and stores in local database.
 module ProjectsLoader
   include ProjectConnector
 
