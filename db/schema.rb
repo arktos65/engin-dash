@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2022_07_25_173836) do
   end
 
   create_table "jira_projects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "project_id", null: false
+    t.integer "project_id"
     t.integer "jira_project_id"
     t.text "name"
     t.string "jira_key"
@@ -83,7 +83,6 @@ ActiveRecord::Schema.define(version: 2022_07_25_173836) do
     t.text "self_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["project_id"], name: "index_jira_projects_on_project_id"
   end
 
   create_table "members", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -191,7 +190,6 @@ ActiveRecord::Schema.define(version: 2022_07_25_173836) do
 
   add_foreign_key "departments", "users"
   add_foreign_key "jira_issues", "jira_projects"
-  add_foreign_key "jira_projects", "projects"
   add_foreign_key "members", "departments"
   add_foreign_key "members", "roles"
   add_foreign_key "members", "sources"

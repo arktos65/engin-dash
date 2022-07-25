@@ -19,10 +19,11 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module EnginDash
+module EnginApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.eager_load_paths += %W(#{config.root}/lib)
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -34,5 +35,8 @@ module EnginDash
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Enable Sidekiq for background automation and scheduling
+    config.active_job.queue_adapter = :sidekiq
   end
 end
