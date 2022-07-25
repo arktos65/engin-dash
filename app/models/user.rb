@@ -6,4 +6,10 @@ class User < ApplicationRecord
          :confirmable, :lockable, :trackable
 
   has_many :departments
+
+  # Returns the user's full name by concatenating the
+  # first name and last name attributes.
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
