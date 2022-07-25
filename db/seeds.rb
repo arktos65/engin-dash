@@ -10,6 +10,8 @@ puts "Task->Seeding database:"
 
 # Default admin
 admin = Admin.new(email: 'admin@example.com',
+                  first_name: Faker::Name.first_name,
+                  last_name: Faker::Name.last_name,
                   password: 'password123',
                   password_confirmation: 'password123')
 admin.save
@@ -19,6 +21,8 @@ puts " * [OK] Admin User (seed)"
 i = 1
 while i < 5 do
   user = User.new(email: Faker::Internet.email,
+                  first_name: Faker::Name.first_name,
+                  last_name: Faker::Name.last_name,
                   password: 'password123',
                   password_confirmation: 'password123')
   user.save
