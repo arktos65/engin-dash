@@ -4,6 +4,10 @@
 # Provides the connection string needed by the JIRA::Client
 # to access the instance of your Jira API.
 module ProjectConnector
+  # Load application configuration when this object is instantiated
+  raw_config = File.read("#{Rails.root}/config/engin.yml")
+  ENGIN_CONFIG = YAML.load(raw_config)
+
   # For security reasons, the values for the connect options should be stored
   # as environment variables and NEVER included in source code.
   def get_options
@@ -16,5 +20,10 @@ module ProjectConnector
       auth_type: :basic,
       read_timeout: 120
     }
+  end
+
+  # Returns the list of fields and their mappings from the Jira API intance
+  def get_field_list(client)
+    client.Field.map_fields
   end
 end

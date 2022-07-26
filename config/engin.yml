@@ -1,0 +1,18 @@
+# Jira integration settings
+jira:
+  # Configuration settings.  As a best practice, use environment variables, which should be set
+  # within the application container.  Do not store these settings in your code repository.
+  site: <%= ENV("JIRA_SITE") %>
+  context: <%= ENV("JIRA_CONTEXT") %>
+  user: <%= ENV("JIRA_USER") %>
+  api_key: <%= ENV("JIRA_API_KEY") %>
+
+  # Recognized values for these Jira fields
+  issue_types: [ "Story", "Bug", "Research", "Chore", "Epic" ]
+  statuses: [ "Created", "Open", "Won't Do", "Triage", "Refined", "Ready to Estimate", "In Progress",
+              "Closed", "Release Engineering" ]
+
+  # Jira API Settings
+  max_results: 50
+  fields:
+    story_points: "customfield_10027"
