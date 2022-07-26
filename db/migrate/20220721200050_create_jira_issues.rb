@@ -6,8 +6,8 @@ class CreateJiraIssues < ActiveRecord::Migration[6.1]
       t.string :issue_key
       t.text :issue_url
       t.text :issue_title
-      t.string :issue_status
-      t.string :issue_type
+      t.text :issue_status
+      t.text :issue_type
       t.integer :story_points
       t.datetime :issue_created
       t.datetime :issue_updated

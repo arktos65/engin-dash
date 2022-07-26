@@ -8,6 +8,10 @@ require 'jira-ruby'
 module IssuesLoader
   include ProjectConnector
 
+  # Constants required by this module
+  MAX_RESULTS = ENGIN_CONFIG["jira"]["max_results"]
+  STORY_POINTS = ENGIN_CONFIG["jira"]["fields"]["story_points"]
+
   # Update project issues by iterating through each project registered
   # in Jira and upserting to the jira_issues table.
   def update_all_issues
@@ -20,13 +24,23 @@ module IssuesLoader
     # Iterate through projects and upsert each record to database
     i = 0
     while i < jira_projects.count
+      page = 0
+      item_count = 0
+      is_last = false
       puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   Fetching issues for project #{jira_projects[i].name}"
-      issues = jira_projects[i].issues
-      unless issues.nil?
-        puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   Upserting Jira issues to EngIn database"
-        jira_project_rec = get_jira_project(jira_projects[i].id)
-        upsert_issues(issues, jira_project_rec.id)
+      puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   Upserting Jira issues to EngIn database"
+      until is_last
+        issues = jira_projects[i].issues(startAt: page * MAX_RESULTS, maxResults: MAX_RESULTS)
+        if issues.count > 0
+          jira_project_rec = get_jira_project(jira_projects[i].id)
+          upsert_issues(issues, jira_project_rec.id)
+          item_count = item_count + issues.count
+          page += 1
+        else
+          is_last = true
+        end
       end
+      puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   Processed #{item_count} issues for project #{jira_projects[i].name}"
       i += 1
     end
   end
@@ -54,7 +68,7 @@ module IssuesLoader
           issue_title: issues[i].summary,
           issue_status: issues[i].status,
           issue_type: issues[i].issuetype,
-          story_points: issues[i].customfield_10000,
+          story_points: issues[i].customfield_10027,
           issue_created: issues[i].created,
           issue_updated: issues[i].updated)
         issue.save
@@ -66,12 +80,11 @@ module IssuesLoader
           issue_title: issues[i].summary,
           issue_status: issues[i].status,
           issue_type: issues[i].issuetype,
-          story_points: issues[i].customfield_10000,
+          story_points: issues[i].customfield_10027,
           issue_created: issues[i].created,
           issue_updated: issues[i].updated)
       end
       i += 1
     end
-    puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   Processed #{i} issues"
   end
 end

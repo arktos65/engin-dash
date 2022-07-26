@@ -18,7 +18,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Jira API library
-gem 'jira-ruby', '~> 2.2'
+gem 'jira-ruby', :require => 'jira-ruby'
 # Background automation tools
 gem 'sidekiq', '~> 6.5', '>= 6.5.1'
 gem 'sidekiq-scheduler', '~> 4.0', '>= 4.0.2'

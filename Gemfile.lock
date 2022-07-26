@@ -296,7 +296,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.2)
   faker (~> 2.21)
   jbuilder (~> 2.7)
-  jira-ruby (~> 2.2)
+  jira-ruby
   listen (~> 3.3)
   mysql2 (~> 0.5)
   puma (~> 5.0)
