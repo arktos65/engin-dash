@@ -19,7 +19,14 @@ module IssuesLoader
     client = JIRA::Client.new(get_options)
 
     puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   Fetching all projects from Jira"
-    jira_projects = client.Project.all
+    begin
+      jira_projects = client.Project.all
+    rescue StandardError => e
+      puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   ERROR: An error occurred while fetching Jira projects"
+      puts e.message
+      return
+    end
+
 
     # Iterate through projects and upsert each record to database
     i = 0
@@ -30,8 +37,15 @@ module IssuesLoader
       puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   Fetching issues for project #{jira_projects[i].name}"
       puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   Upserting Jira issues to EngIn database"
       until is_last
-        issues = jira_projects[i].issues(startAt: page * MAX_RESULTS, maxResults: MAX_RESULTS)
-        if issues.count > 0
+        error_status = false
+        begin
+          issues = jira_projects[i].issues(startAt: page * MAX_RESULTS, maxResults: MAX_RESULTS)
+        rescue StandardError => e
+          puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   ERROR: An error occurred while fetching Jira issues"
+          puts e.message
+          error_status = true
+        end
+        if issues.count > 0 && !error_status
           jira_project_rec = get_jira_project(jira_projects[i].id)
           upsert_issues(issues, jira_project_rec.id)
           item_count = item_count + issues.count
