@@ -15,7 +15,13 @@ module ProjectsLoader
     client = JIRA::Client.new(get_options)
 
     puts "#{Time.now().strftime('%F - %H:%M:%S.%L')}:   Fetching all projects from Jira"
-    projects = client.Project.all
+    begin
+      projects = client.Project.all
+    rescue StandardError => e
+      puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   ERROR: An error occurred fetching Jira projects"
+      puts e.message
+      return
+    end
 
     # Iterate through projects and upsert each record to database
     puts "#{Time.now().strftime('%F - %H:%M:%S.%L')}:   Upserting Jira projects to EngIn database"
