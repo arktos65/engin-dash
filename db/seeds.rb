@@ -178,7 +178,7 @@ while i < 5
     jira_issue = JiraIssue.create!(id: key,
                                    jira_issue_id: key,
                                    jira_project_id: i,
-                                   issue_key: Faker::String.random(length: 5),
+                                   issue_key: "KEY-#{key}",
                                    issue_url: Faker::Internet.url,
                                    issue_title: Faker::Lorem.words(number: 5),
                                    issue_status: "Closed",
