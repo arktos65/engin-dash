@@ -36,4 +36,17 @@ module EnginUtility
     end
     puts "#{Time.now().strftime('%F - %H:%M:%S.%L')}:   Task complete"
   end
+
+  # This method clears the Project Statistics table.
+  def destroy_statistics
+    puts "#{Time.now().strftime('%F - %H:%M:%S.%L')}:   Clearing Project Statistics database table"
+    begin
+      ProjectStatistic.destroy_all
+    rescue StandardError => e
+      puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   ERROR: An error occurred clearing table"
+      puts e.message
+      return
+    end
+    puts "#{Time.now().strftime('%F - %H:%M:%S.%L')}:   Task complete"
+  end
 end
