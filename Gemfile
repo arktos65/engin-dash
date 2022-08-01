@@ -55,6 +55,8 @@ group :development, :test do
   gem 'faker', '~> 2.21'
   # Simplifies matching tests in RSpec
   gem 'shoulda-matchers', '~> 5.1'
+  # Database seeding tool
+  gem 'yaml_db', '~> 0.7.0'
 end
 
 group :development do

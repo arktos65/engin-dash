@@ -300,6 +300,9 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    yaml_db (0.7.0)
+      rails (>= 3.0)
+      rake (>= 0.8.7)
     zeitwerk (2.6.0)
 
 PLATFORMS
@@ -335,6 +338,7 @@ DEPENDENCIES
   tzinfo-data
   web-console (>= 4.1.0)
   webpacker (~> 5.0)
+  yaml_db (~> 0.7.0)
 
 RUBY VERSION
    ruby 2.7.2p137
