@@ -28,7 +28,7 @@ module ProjectReporting
     puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   Finished processing Jira project issues"
   end
 
-  #private
+  private
 
   # Returns the name of the requested stream id.
   def get_stream_name(stream_id)
