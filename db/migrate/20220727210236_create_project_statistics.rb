@@ -1,10 +1,10 @@
 class CreateProjectStatistics < ActiveRecord::Migration[6.1]
   def change
     create_table :project_statistics do |t|
-      t.belongs_to :stream, null: false, foreign_key: true
-      t.text :stream_name
+      t.bigint :stream_id, null: false
+      t.text :stream_name, null: false
       t.belongs_to :project, null: false, foreign_key: true
-      t.string :project_name
+      t.string :project_name, null: false
       t.integer :week_number
       t.integer :month_number
       t.integer :year_number

@@ -12,6 +12,16 @@ jira:
   statuses: [ "Created", "Open", "Won't Do", "Triage", "Refined", "Ready to Estimate", "In Progress",
               "Closed", "Release Engineering" ]
 
+  # Values used for various filters and groupings
+  story_types: ["Story"]
+  bug_types: ["Bug"]
+  task_types: ["Research", "Chore"]
+  open_status: ["Created", "Open", "Triage", "Refined", "Ready to Estimate", "In Progress", "Release Engineering"]
+  closed_status: ["Closed"]
+  dropped_status: ["Won't Do"]
+  capex_types: ["Story"]
+  opex_types: ["Bug", "Research", "Chore"]
+
   # Jira API Settings
   max_results: 50
   fields:

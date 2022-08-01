@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_27_210236) do
+ActiveRecord::Schema.define(version: 2022_07_28_162034) do
 
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -103,9 +103,9 @@ ActiveRecord::Schema.define(version: 2022_07_27_210236) do
 
   create_table "project_statistics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "stream_id", null: false
-    t.text "stream_name"
+    t.text "stream_name", null: false
     t.bigint "project_id", null: false
-    t.string "project_name"
+    t.string "project_name", null: false
     t.integer "week_number"
     t.integer "month_number"
     t.integer "year_number"
@@ -126,8 +126,10 @@ ActiveRecord::Schema.define(version: 2022_07_27_210236) do
     t.decimal "weekly_opex", precision: 10
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "dropped_bugs"
+    t.integer "dropped_stories"
+    t.integer "dropped_tasks"
     t.index ["project_id"], name: "index_project_statistics_on_project_id"
-    t.index ["stream_id"], name: "index_project_statistics_on_stream_id"
   end
 
   create_table "projects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -223,7 +225,6 @@ ActiveRecord::Schema.define(version: 2022_07_27_210236) do
   add_foreign_key "members", "roles"
   add_foreign_key "members", "sources"
   add_foreign_key "project_statistics", "projects"
-  add_foreign_key "project_statistics", "streams"
   add_foreign_key "projects", "streams"
   add_foreign_key "roles", "departments"
   add_foreign_key "teams", "currencies"

@@ -24,6 +24,8 @@ gem 'sidekiq', '~> 6.5', '>= 6.5.1'
 gem 'sidekiq-scheduler', '~> 4.0', '>= 4.0.2'
 # User authentication
 gem 'devise', '~> 4.8', '>= 4.8.1'
+# Admin view framework
+gem 'trestle'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
