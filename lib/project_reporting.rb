@@ -6,6 +6,8 @@
 module ProjectReporting
   include ProjectConnector
 
+  # This method is the primary method to be called for processing Jira project issues
+  # and calculating project statistics.
   def process_jira_issues
     # Get the week, month, and year numbers for our statistics
     week_number = Time.now.strftime("%U").to_i
@@ -14,16 +16,19 @@ module ProjectReporting
 
     # Query the projects table for records where is_trackable is true
     puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   Starting Jira issue processing for week #{week_number} of year #{year_number}"
-    projects = Project.find_by(is_trackable: true)
-
     # Begin iterating through the projects to compute results
-    projects.each do |project|
-      puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   Processing project #{project.name}"
-      calculate_statistics(project.stream_id, project.id, project.name)
+    Project.all.each do |project|
+      if project.is_trackable
+        puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   Processing project #{project.name}"
+        calculate_statistics(project.stream_id, project.id, project.name, week_number, month_number, year_number)
+      else
+        puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   Skipping project #{project.name}"
+      end
     end
+    puts "#{Time.now.strftime('%F - %H:%M:%S.%L')}:   Finished processing Jira project issues"
   end
 
-  private
+  #private
 
   # Returns the name of the requested stream id.
   def get_stream_name(stream_id)
@@ -32,12 +37,16 @@ module ProjectReporting
   end
 
   # Main method for processing Jira Issues and tabulating statistics
-  def calculate_statistics(stream_id, project_id, project_name)
+  def calculate_statistics(stream_id, project_id, project_name, week_num, month_num, year_num)
+    # Start building the project statistic record
     output_record = ProjectStatistic.new
     output_record.stream_id = stream_id
     output_record.stream_name = get_stream_name(stream_id)
     output_record.project_id = project_id
     output_record.project_name = project_name
+    output_record.week_number = week_num
+    output_record.month_number = month_num
+    output_record.year_number = year_num
 
     # Calculate ticket counts
     output_record.bug_count = bug_count(project_id)
@@ -64,30 +73,34 @@ module ProjectReporting
     output_record.weekly_capex = capex_cost(output_record.capex_points,
                                               output_record.opex_points,
                                               output_record.weekly_team_cost)
-    output_record.weekly_opex = capex_cost(output_record.capex_points,
+    output_record.weekly_opex = opex_cost(output_record.capex_points,
                                             output_record.opex_points,
                                             output_record.weekly_team_cost)
     output_record.save
   end
 
   # Calculates and returns the aggregate team weekly cost allocation
+  # TODO: Add currency support (currently only supports USD)
   def team_cost(project_id)
     total_cost = 0
-    teams = Team.find_by(project_id: project_id)
-    teams.each do |team|
-      total_cost = total_cost + (team.weekly_rate * (team.allocation / 100))
+    Team.where(project_id: project_id).find_each do |person|
+      total_cost = total_cost + (person.weekly_rate * (person.allocation / 100))
     end
     total_cost
   end
 
   # Returns the capex cost allocation
   def capex_cost(capex_pts, opex_pts, team_cost_amt)
-    capex_pts / (opex_pts + capex_pts) * team_cost_amt
+    total_points = capex_pts + opex_pts
+    capex_alloc = capex_pts / total_points
+    team_cost_amt * capex_alloc
   end
 
   # Returns the opex cost allocation
   def opex_cost(capex_pts, opex_pts, team_cost_amt)
-    opex_pts / (opex_pts + capex_pts) * team_cost_amt
+    total_points = capex_pts + opex_pts
+    opex_alloc = opex_pts / total_points
+    team_cost_amt * opex_alloc
   end
 
   # Returns total number of capex allocated story points

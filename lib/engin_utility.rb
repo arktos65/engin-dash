@@ -6,7 +6,7 @@
 module EnginUtility
   # This method clears and resets the Jira Issues and Jira Projects table.
   def destroy_all_jira_data
-    puts "#{Time.now().strftime('%F - %H:%M:%S.%L')}:   Begin truncating database tables"
+    puts "#{Time.now().strftime('%F - %H:%M:%S.%L')}:   Begin clearing Jira database tables"
     destroy_jira_issues
     destroy_jira_projects
   end
