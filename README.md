@@ -115,7 +115,12 @@ root directory of the engin-dash code base:
 
     $ rvm use
     $ rails utility:clear_jira_issues
+    2022-08-02 - 10:59:16.126:   Clearing Jira Issues database table
+    2022-08-02 - 10:59:16.253:   Task complete
+    
     $ rails utility:clear_jira_projects
+    2022-08-02 - 10:59:55.695:   Clearing Jira Projects database table
+    2022-08-02 - 10:59:55.817:   Task complete
 
 If you're clearing out the Jira data, perform these operations in the order as illustrated above.
 
