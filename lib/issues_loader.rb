@@ -69,6 +69,7 @@ module IssuesLoader
   # This method upserts a single Jira project issue into the jira_issues
   # database table.
   def upsert_issues(issues, project_id)
+
     i = 0
     while i < issues.count
       issue = JiraIssue.find_by(jira_issue_id: issues[i].id)
@@ -80,9 +81,9 @@ module IssuesLoader
           issue_key: issues[i].key,
           issue_url: issues[i].self,
           issue_title: issues[i].summary,
-          issue_status: issues[i].status,
-          issue_type: issues[i].issuetype,
-          story_points: issues[i].customfield_10027,
+          issue_status: issues[i].status.name,
+          issue_type: issues[i].issuetype.name,
+          story_points: issues[i].customfield_10103,
           issue_created: issues[i].created,
           issue_updated: issues[i].updated)
         issue.save
@@ -92,9 +93,9 @@ module IssuesLoader
           issue_key: issues[i].key,
           issue_url: issues[i].self,
           issue_title: issues[i].summary,
-          issue_status: issues[i].status,
-          issue_type: issues[i].issuetype,
-          story_points: issues[i].customfield_10027,
+          issue_status: issues[i].status.name,
+          issue_type: issues[i].issuetype.name,
+          story_points: issues[i].customfield_10103,
           issue_created: issues[i].created,
           issue_updated: issues[i].updated)
       end

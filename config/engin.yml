@@ -25,4 +25,4 @@ jira:
   # Jira API Settings
   max_results: 50
   fields:
-    story_points: "customfield_10027"
+    story_points: "customfield_10103"
