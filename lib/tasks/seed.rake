@@ -2,8 +2,8 @@ namespace :seed do
   desc "Database seeding commands"
   task admins: :environment do
     # Technology Division Admins
-    admin_emails = ['sean.sullivan@beatport.com','sedin.dugum@beatport.com']
-    admin_names = ['Sean Sullivan','Sedin Dugum']
+    admin_emails = ['sean.sullivan@beatport.com','sedin.dugum@beatport.com','adrian.williams@beatport.com']
+    admin_names = ['Sean Sullivan','Sedin Dugum','Adrian Williams']
     i = 0
     while i < admin_emails.count do
       names = admin_names[i].split
@@ -20,8 +20,10 @@ namespace :seed do
 
   task users: :environment do
     # Technology Division Users
-    user_emails = ['adrian.williams@beatport.com','dan.freeman@beatport.com','mark.demma@beatport.com','morgan.soley@beatport.com']
-    user_names = ['Adrian Williams','Dan Freeman','Mark Demma','Morgan Soley']
+    user_emails = ['adrian.williams@beatport.com','dan.freeman@beatport.com','mark.demma@beatport.com',
+                   'morgan.soley@beatport.com','sean.sullivan@beatport.com','sedin.dugum@beatport.com']
+    user_names = ['Adrian Williams','Dan Freeman','Mark Demma','Morgan Soley','Sean Sullivan',
+                  'Sedin Dugum']
     i = 0
     while i < user_emails.count do
       names = user_names[i].split
