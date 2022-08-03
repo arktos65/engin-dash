@@ -1,0 +1,72 @@
+<%= form_with(model: resource_budget) do |form| %>
+  <% if resource_budget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(resource_budget.errors.count, "error") %> prohibited this resource_budget from being saved:</h2>
+
+      <ul>
+        <% resource_budget.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :member_id %>
+    <%= form.text_field :member_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :currency_id %>
+    <%= form.text_field :currency_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :period_start %>
+    <%= form.date_select :period_start %>
+  </div>
+
+  <div class="field">
+    <%= form.label :period_end %>
+    <%= form.date_select :period_end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :classification %>
+    <%= form.number_field :classification %>
+  </div>
+
+  <div class="field">
+    <%= form.label :base_rate %>
+    <%= form.text_field :base_rate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weekly_rate %>
+    <%= form.text_field :weekly_rate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :monthly_rate %>
+    <%= form.text_field :monthly_rate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :annual_rate %>
+    <%= form.text_field :annual_rate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fiscal_year %>
+    <%= form.number_field :fiscal_year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comments %>
+    <%= form.text_area :comments %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

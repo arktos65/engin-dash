@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Resource Budgets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Member</th>
+      <th>Currency</th>
+      <th>Period start</th>
+      <th>Period end</th>
+      <th>Classification</th>
+      <th>Base rate</th>
+      <th>Weekly rate</th>
+      <th>Monthly rate</th>
+      <th>Annual rate</th>
+      <th>Fiscal year</th>
+      <th>Comments</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resource_budgets.each do |resource_budget| %>
+      <tr>
+        <td><%= resource_budget.member_id %></td>
+        <td><%= resource_budget.currency_id %></td>
+        <td><%= resource_budget.period_start %></td>
+        <td><%= resource_budget.period_end %></td>
+        <td><%= resource_budget.classification %></td>
+        <td><%= resource_budget.base_rate %></td>
+        <td><%= resource_budget.weekly_rate %></td>
+        <td><%= resource_budget.monthly_rate %></td>
+        <td><%= resource_budget.annual_rate %></td>
+        <td><%= resource_budget.fiscal_year %></td>
+        <td><%= resource_budget.comments %></td>
+        <td><%= link_to 'Show', resource_budget %></td>
+        <td><%= link_to 'Edit', edit_resource_budget_path(resource_budget) %></td>
+        <td><%= link_to 'Destroy', resource_budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Resource Budget', new_resource_budget_path %>
