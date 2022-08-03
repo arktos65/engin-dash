@@ -174,4 +174,29 @@ namespace :import do
 
     puts "#{Time.now().strftime('%F - %H:%M:%S.%L')}:   Task complete"
   end
+
+  # Import Members
+  # From a YAML input file to load members database table.
+  task members: :environment do
+    puts "#{Time.now().strftime('%F - %H:%M:%S.%L')}:   Importing Members"
+    filename = ARGV[0]
+    members_from_yaml = YAML.load_stream(File.read(filename))
+
+    i = 0
+    while i < members_from_yaml.count do
+      member = Member.new(id: members_from_yaml[i]["id"],
+                           first_name: members_from_yaml[i]["first_name"],
+                           last_name: members_from_yaml[i]["last_name"],
+                           role_id: members_from_yaml[i]["role_id"],
+                           department_id: members_from_yaml[i]["department_id"],
+                           source_id: members_from_yaml[i]["source_id"],
+                           start_date: members_from_yaml[i]["start_date"],
+                           end_date: members_from_yaml[i]["end_date"],
+                           is_active: members_from_yaml[i]["is_active"])
+      member.save
+      i += 1
+    end
+
+    puts "#{Time.now().strftime('%F - %H:%M:%S.%L')}:   Task complete"
+  end
 end
