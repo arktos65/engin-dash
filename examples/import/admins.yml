@@ -4,7 +4,7 @@ last_name: Smith
 email: joe.smith@company.com
 password: password123
 ---
-first_smith: Jane
+first_name: Jane
 last_name: Doe
 email: jane.doe@company.com
 password: password123
