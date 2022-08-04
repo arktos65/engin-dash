@@ -199,4 +199,28 @@ namespace :import do
 
     puts "#{Time.now().strftime('%F - %H:%M:%S.%L')}:   Task complete"
   end
+
+  # Import Resource Budget
+  # From a YAML input file to load the resource_budgets database table.
+  task resource_budgets: :environment do
+    puts "#{Time.now().strftime('%F - %H:%M:%S.%L')}:   Importing Resource Budget"
+    filename = ARGV[0]
+    resources_from_yaml = YAML.load_stream(File.read(filename))
+
+    i = 0
+    while i < resources_from_yaml.count do
+      budget = ResourceBudget.new(id: resources_from_yaml[i]["id"],
+                                  member_id: resources_from_yaml[i]["member_id"],
+                                  currency_id: resources_from_yaml[i]["currency_id"],
+                                  period_start: resources_from_yaml[i]["period_start"],
+                                  period_end: resources_from_yaml[i]["period_end"],
+                                  classification: resources_from_yaml[i]["classification"],
+                                  base_rate: resources_from_yaml[i]["base_rate"],
+                                  fiscal_year: resources_from_yaml[i]["fiscal_yeaer"])
+      budget.save
+      i += 1
+    end
+
+    puts "#{Time.now().strftime('%F - %H:%M:%S.%L')}:   Task complete"
+  end
 end
