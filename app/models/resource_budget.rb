@@ -6,14 +6,14 @@ class ResourceBudget < ApplicationRecord
   # Validators
   validates_presence_of :member, :currency
   validates_presence_of :base_rate, :fiscal_year
-  validates :validate_base_rate_lt_zero
+  validate :validate_base_rate_gt_zero
 
-  enum :classification  [:salary, :contractor, :bonus]
+  enum classification:  [:salary, :contractor, :bonus]
 
   before_save :calculate_rates
 
   # Custom validator methods
-  def validate_base_rate_lt_zero
+  def validate_base_rate_gt_zero
     if self.base_rate < 0
       errors.add(:base_rate, "value can't be less than 0")
     end
