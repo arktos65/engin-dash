@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :resource_budgets
   get 'home/index'
   resources :jira_issues
   resources :jira_projects

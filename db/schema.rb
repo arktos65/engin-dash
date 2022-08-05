@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_28_162034) do
+ActiveRecord::Schema.define(version: 2022_08_03_185847) do
 
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -145,6 +145,24 @@ ActiveRecord::Schema.define(version: 2022_07_28_162034) do
     t.index ["stream_id"], name: "index_projects_on_stream_id"
   end
 
+  create_table "resource_budgets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "member_id", null: false
+    t.bigint "currency_id", null: false
+    t.date "period_start"
+    t.date "period_end"
+    t.integer "classification", default: 0
+    t.decimal "base_rate", precision: 10
+    t.decimal "weekly_rate", precision: 10
+    t.decimal "monthly_rate", precision: 10
+    t.decimal "annual_rate", precision: 10
+    t.integer "fiscal_year"
+    t.text "comments"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["currency_id"], name: "index_resource_budgets_on_currency_id"
+    t.index ["member_id"], name: "index_resource_budgets_on_member_id"
+  end
+
   create_table "roles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.boolean "is_shared"
@@ -226,6 +244,8 @@ ActiveRecord::Schema.define(version: 2022_07_28_162034) do
   add_foreign_key "members", "sources"
   add_foreign_key "project_statistics", "projects"
   add_foreign_key "projects", "streams"
+  add_foreign_key "resource_budgets", "currencies"
+  add_foreign_key "resource_budgets", "members"
   add_foreign_key "roles", "departments"
   add_foreign_key "teams", "currencies"
   add_foreign_key "teams", "members"

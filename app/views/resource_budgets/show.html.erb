@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @resource_budget.member_id %>
+</p>
+
+<p>
+  <strong>Currency:</strong>
+  <%= @resource_budget.currency_id %>
+</p>
+
+<p>
+  <strong>Period start:</strong>
+  <%= @resource_budget.period_start %>
+</p>
+
+<p>
+  <strong>Period end:</strong>
+  <%= @resource_budget.period_end %>
+</p>
+
+<p>
+  <strong>Classification:</strong>
+  <%= @resource_budget.classification %>
+</p>
+
+<p>
+  <strong>Base rate:</strong>
+  <%= @resource_budget.base_rate %>
+</p>
+
+<p>
+  <strong>Weekly rate:</strong>
+  <%= @resource_budget.weekly_rate %>
+</p>
+
+<p>
+  <strong>Monthly rate:</strong>
+  <%= @resource_budget.monthly_rate %>
+</p>
+
+<p>
+  <strong>Annual rate:</strong>
+  <%= @resource_budget.annual_rate %>
+</p>
+
+<p>
+  <strong>Fiscal year:</strong>
+  <%= @resource_budget.fiscal_year %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @resource_budget.comments %>
+</p>
+
+<%= link_to 'Edit', edit_resource_budget_path(@resource_budget) %> |
+<%= link_to 'Back', resource_budgets_path %>
