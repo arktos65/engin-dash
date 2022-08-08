@@ -53,6 +53,18 @@ directory.  Then you change directory into the source code root directory and ru
 install all the required Ruby gems for the project.  The `Gemfile` provides the list of gems and
 version constraints to be installed.
 
+### Preparing Bootstrap Template
+
+The next step is to install all of required libraries and dependencies for the Bootstrap template
+used in this application:
+
+    $ npm install --global gulp-cli
+    $ cd <root_directory>/vendor/assets/sneat-bootstrap
+    $ yarn
+
+Read the `SNEAT_TEMPLATE.md` file for instructions on building and maintain the template within 
+the project.
+
 ### Network local hosts
 
 Edit your /etc/hosts file and add the following line:

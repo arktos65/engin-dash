@@ -7,6 +7,9 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore node modules
+/vendor/assets/sneat-bootstrap/node_modules
+
 # Ignore Rubymine IDE configs
 /.idea
 
