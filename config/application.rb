@@ -24,6 +24,8 @@ module EnginApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.eager_load_paths += %W(#{config.root}/lib)
+    # Load Sneat Bootstrap theme
+    config.eager_load_paths += %W(#{config.root}/vendor/assets/sneat-bootstrap)
 
     # Configuration for the application, engines, and railties goes here.
     #
