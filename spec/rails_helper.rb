@@ -73,6 +73,4 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  # Add FactoryBot support to RSpec
-  config.include FactoryBot::Syntax::Methods
 end
