@@ -5,5 +5,5 @@ class Source < ApplicationRecord
   has_many :members
 
   # Validators
-  validates_presence_of :name
+  validates_presence_of :name, :contact_name, :contact_email
 end
