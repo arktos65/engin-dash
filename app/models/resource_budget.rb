@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ResourceBudget < ApplicationRecord
   # Associations
   belongs_to :member
@@ -6,30 +8,25 @@ class ResourceBudget < ApplicationRecord
   # Validators
   validates_presence_of :member, :currency
   validates_presence_of :base_rate, :fiscal_year
-  validate :validate_base_rate_gt_zero
+  validates :base_rate, numericality: { greater_than: 0 }
 
   enum classification:  [:salary, :contractor, :bonus]
 
+  # Callback to calculate weekly, monthly, and annual rates before
+  # saving the record.
   before_save :calculate_rates
-
-  # Custom validator methods
-  def validate_base_rate_gt_zero
-    if self.base_rate < 0
-      errors.add(:base_rate, "value can't be less than 0")
-    end
-  end
 
   # Calculate weekly, monthly, and annual rates unless the record
   # is classified as a bonus.
   def calculate_rates
     if :classification != :bonus
-      self.annual_rate = (self.base_rate * 40) * 52
-      self.weekly_rate = self.base_rate * 40
-      self.monthly_rate = self.annual_rate / 12
+      annual_rate = (base_rate * 40) * 52
+      weekly_rate = base_rate * 40
+      monthly_rate = annual_rate / 12
     else
-      self.annual_rate = 0
-      self.weekly_rate = 0
-      self.monthly_rate = 0
+      annual_rate = 0
+      weekly_rate = 0
+      monthly_rate = 0
     end
   end
 end

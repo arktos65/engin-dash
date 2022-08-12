@@ -1,5 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe ProjectStatistic, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # Create data object for testing
+  test_stream = FactoryBot.create(:stream)
+  test_project = FactoryBot.create(:project, stream_id: test_stream.id)
+  test_statistic = FactoryBot.create(:project_statistic,
+                                     project_id: test_project.id,
+                                     project_name: test_project.name)
+
+  # Test various conditions
+  it "is valid with valid attributes" do
+    expect(test_statistic).to be_valid
+  end
+  it "is not valid without an assigned project" do
+    test_statistic.project_id = nil
+    expect(test_statistic).to_not be_valid
+  end
+  it "is not valid without a project name" do
+    test_statistic.project_name = nil
+    expect(test_statistic).to_not be_valid
+  end
 end

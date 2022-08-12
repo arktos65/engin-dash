@@ -24,9 +24,6 @@ require 'rspec/rails'
 #
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
-require'devise'
-requireFile.expand_path("spec/support/controller_macros.rb")
-
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
@@ -53,10 +50,6 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
-  config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include Devise::Test::IntegrationHelpers, type: :request
-  config.extend ControllerMacros, :type => :controller
-
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
@@ -80,6 +73,4 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  # Add FactoryBot support to RSpec
-  config.include FactoryBot::Syntax::Methods
 end
