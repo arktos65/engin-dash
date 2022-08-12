@@ -11,15 +11,15 @@ RSpec.describe JiraIssue, type: :model do
   it "is valid with valid attributes" do
     expect(test_issue).to be_valid
   end
-  it "is invalid without a Jira issue id" do
+  it "is not valid without a Jira issue id" do
     test_issue.jira_issue_id = nil
     expect(test_issue).to_not be_valid
   end
-  it "is invalid without a Jira key" do
+  it "is not valid without a Jira key" do
     test_issue.issue_key = nil
     expect(test_issue).to_not be_valid
   end
-  it "is invalid without a Jira issue title" do
+  it "is not valid without a Jira issue title" do
     test_issue.issue_title = nil
     expect(test_issue).to_not be_valid
   end

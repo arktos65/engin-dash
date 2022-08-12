@@ -5,7 +5,7 @@ FactoryBot.define do
     period_start { Faker::Date.backward(days: 180) }
     period_end { Faker::Date.forward(days: 180) }
     classification { 1 }
-    base_rate { "45.00" }
+    base_rate { 45 }
     weekly_rate { nil }
     monthly_rate { nil }
     annual_rate { nil }
