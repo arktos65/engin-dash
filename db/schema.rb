@@ -102,8 +102,6 @@ ActiveRecord::Schema.define(version: 2022_08_03_185847) do
   end
 
   create_table "project_statistics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "stream_id", null: false
-    t.text "stream_name", null: false
     t.bigint "project_id", null: false
     t.string "project_name", null: false
     t.integer "week_number"

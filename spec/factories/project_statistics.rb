@@ -1,26 +1,24 @@
 FactoryBot.define do
   factory :project_statistic do
-    stream { nil }
-    stream_name { "MyText" }
-    project { nil }
+    project_id { nil }
     project_name { "MyString" }
-    week_number { 1 }
-    month_number { 1 }
-    year_number { 1 }
-    bug_count { 1 }
-    story_count { 1 }
-    task_count { 1 }
-    team_count { 1 }
-    open_bugs { 1 }
-    open_stories { 1 }
-    open_tasks { 1 }
-    closed_bugs { 1 }
-    closed_stories { 1 }
-    closed_tasks { 1 }
-    capex_points { 1 }
-    opex_points { 1 }
-    weekly_team_cost { "9.99" }
-    weekly_capex { "9.99" }
-    weekly_opex { "9.99" }
+    week_number { Faker::Number.between(from: 1, to: 52) }
+    month_number { Faker::Number.between(from: 1, to: 12) }
+    year_number { DateTime.now.year }
+    bug_count { Faker::Number.between(from: 0, to: 100) }
+    story_count { Faker::Number.between(from: 0, to: 100) }
+    task_count { Faker::Number.between(from: 0, to: 100) }
+    team_count { Faker::Number.between(from: 1, to: 8) }
+    open_bugs { Faker::Number.between(from: 0, to: 30) }
+    open_stories { Faker::Number.between(from: 0, to: 30) }
+    open_tasks { Faker::Number.between(from: 0, to: 30) }
+    closed_bugs { Faker::Number.between(from: 0, to: 40) }
+    closed_stories { Faker::Number.between(from: 0, to: 40) }
+    closed_tasks { Faker::Number.between(from: 0, to: 40) }
+    capex_points { Faker::Number.between(from: 1, to: 500) }
+    opex_points { Faker::Number.between(from: 1, to: 500) }
+    weekly_team_cost { 2500 }
+    weekly_capex { 2000 }
+    weekly_opex { 500 }
   end
 end

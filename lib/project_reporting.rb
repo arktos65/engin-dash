@@ -30,18 +30,10 @@ module ProjectReporting
 
   private
 
-  # Returns the name of the requested stream id.
-  def get_stream_name(stream_id)
-    stream = Stream.find_by(id: stream_id)
-    stream.name
-  end
-
   # Main method for processing Jira Issues and tabulating statistics
   def calculate_statistics(stream_id, project_id, project_name, week_num, month_num, year_num)
     # Start building the project statistic record
     output_record = ProjectStatistic.new
-    output_record.stream_id = stream_id
-    output_record.stream_name = get_stream_name(stream_id)
     output_record.project_id = project_id
     output_record.project_name = project_name
     output_record.week_number = week_num
