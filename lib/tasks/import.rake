@@ -223,4 +223,26 @@ namespace :import do
 
     puts "#{Time.now().strftime('%F - %H:%M:%S.%L')}:   Task complete"
   end
+
+  # Import Help
+  # Displays brief list of available tasks and a description of what they do.
+  task help: :environment do
+    puts "Available actions for import task:"
+    puts "- `$ rails import:help` -- Displays this help text."
+    puts "- `$ rails import:admins <yaml_file>` -- Creates admin level users in the application."
+    puts "- `$ rails import:users <yaml_file>` -- Creates general users in the application.  Be sure to "
+    puts "     include department managers in this file because departments are owned by management users."
+    puts "- `$ rails import:departments <yaml_file>` -- Loads departments you wish to track and assigns "
+    puts "     them to a manager from the `users` table."
+    puts "- `$ rails import:sources <yaml_file>` -- Loads sources, which are business entities from where "
+    "          employees and contractors are sourced."
+    puts "- `$ rails import:currencies <yaml_file>` -- Loads the supported currencies employees and contractors are paid in."
+    puts "- `$ rails import:streams <yaml_file>` -- Loads the business Value Streams into the database."
+    puts "- `$ rails import:projects <yaml_file>` -- Loads projects under Value Streams into the database."
+    puts "- `$ rails import:roles <yaml_file>` -- Loads the job roles by department into the database."
+    puts "- `$ rails import:members <yaml_file>` -- Loads the employees and contractors in your organization into the database."
+    puts "- `$ rails import:resource_budgets <yaml_file>` -- Loads the initial staffing budget for each member in the organization."
+    puts "- `$ rails import:teams <yaml_file>` -- Loads the team assignments for each member in the organization. "
+    puts "     Teams belong to projects."
+  end
 end

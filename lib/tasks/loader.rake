@@ -14,4 +14,12 @@ namespace :loader do
     include ProjectReporting
     process_jira_issues
   end
+
+  task help: :environment do
+    puts "Available actions for loader tasks:"
+    puts "- `$ rails loader:help` -- Displays this help text."
+    puts "- `$ rails loader:jira_projects` -- Performs an upsert of Jira projects to EngIn database."
+    puts "- `$ rails loader:jira_issues` -- Performs an upsert of Jira issues to EngIn database."
+    puts "- `$ rails loader:jira_statistics` -- Process weekly Jira data and generate statistics for reporting."
+  end
 end
