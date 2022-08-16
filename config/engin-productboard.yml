@@ -1,6 +1,6 @@
 ---
 product_board:
   api:
-    key: ABCD1234567890
-    url: https://api.productboard.com/
+    key: <%=ENV("PRODUCTBOARD_API_KEY") %>
+    url: <%=ENV("PRODUCTBOARD_API_URL") %>
     
