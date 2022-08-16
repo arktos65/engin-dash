@@ -95,6 +95,10 @@ GEM
       railties (>= 5.0.0)
     faker (2.21.0)
       i18n (>= 1.8.11, < 2)
+    faraday (2.5.2)
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (3.0.0)
     ffi (1.15.5)
     fugit (1.5.3)
       et-orbi (~> 1, >= 1.2.7)
@@ -240,6 +244,7 @@ GEM
     rubocop-rspec (2.11.1)
       rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
+    ruby2_keywords (0.0.5)
     rufus-scheduler (3.8.2)
       fugit (~> 1.1, >= 1.1.6)
     sass-rails (6.0.0)
@@ -315,6 +320,7 @@ DEPENDENCIES
   devise (~> 4.8, >= 4.8.1)
   factory_bot_rails (~> 6.2)
   faker (~> 2.21)
+  faraday
   jbuilder (~> 2.7)
   jira-ruby
   listen (~> 3.3)
