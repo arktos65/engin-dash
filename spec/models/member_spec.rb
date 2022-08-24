@@ -2,13 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Member, type: :model do
   # Create data objects to be tested
-  test_user = FactoryBot.create(:user)
-  test_department = FactoryBot.create(:department, user_id: test_user.id)
-  test_source = FactoryBot.create(:source)
-  test_role = FactoryBot.create(:role, department_id: test_department.id)
-  test_member = FactoryBot.create(:member, role_id: test_role.id,
-                                  department_id: test_department.id,
-                                  source_id: test_source.id)
+  test_member = FactoryBot.create(:member)
 
   # Test various conditions
   it "is valid with valid attributes" do

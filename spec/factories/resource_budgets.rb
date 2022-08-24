@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :resource_budget do
-    member { nil }
-    currency { nil }
+    member
+    currency
     period_start { Faker::Date.backward(days: 180) }
     period_end { Faker::Date.forward(days: 180) }
     classification { 1 }

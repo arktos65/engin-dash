@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Department, type: :model do
   # Create test data objects
-  test_user = FactoryBot.create(:user)
-  test_department = FactoryBot.create(:department, user_id: test_user.id)
+  test_department = FactoryBot.create(:department)
 
   # Test various conditions
   it "is valid with valid attributes" do
