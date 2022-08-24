@@ -5,6 +5,6 @@ FactoryBot.define do
     name { Faker::Job.title }
     is_shared { false }
     is_administration { false }
-    department_id { nil }
+    department
   end
 end

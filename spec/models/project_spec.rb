@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Project, type: :model do
   # Create data objects for testing
-  test_stream = FactoryBot.create(:stream)
-  test_project = FactoryBot.create(:project, stream_id: test_stream.id)
+  test_project = FactoryBot.create(:project)
 
   # Test various conditions
   it "is valid with valid attributes" do

@@ -2,19 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Team, type: :model do
   # Create data objects to be tested
-  test_currency = FactoryBot.create(:currency)
-  test_user = FactoryBot.create(:user)
-  test_department = FactoryBot.create(:department, user_id: test_user.id)
-  test_source = FactoryBot.create(:source)
-  test_role = FactoryBot.create(:role, department_id: test_department.id)
-  test_member = FactoryBot.create(:member, role_id: test_role.id,
-                                  department_id: test_department.id,
-                                  source_id: test_source.id)
-  test_stream = FactoryBot.create(:stream)
-  test_project = FactoryBot.create(:project, stream_id: test_stream.id)
-  test_team = FactoryBot.create(:team, member_id: test_member.id,
-                                project_id: test_project.id,
-                                currency_id: test_currency.id)
+  test_team = FactoryBot.create(:team)
 
   # Test various conditions
   context 'validating presence of' do

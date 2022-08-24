@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :project_statistic do
-    project_id { nil }
-    project_name { "MyString" }
+    project
+    project_name { "Project Name" }
     week_number { Faker::Number.between(from: 1, to: 52) }
     month_number { Faker::Number.between(from: 1, to: 12) }
     year_number { DateTime.now.year }

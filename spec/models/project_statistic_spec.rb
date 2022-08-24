@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ProjectStatistic, type: :model do
   # Create data object for testing
-  test_stream = FactoryBot.create(:stream)
-  test_project = FactoryBot.create(:project, stream_id: test_stream.id)
-  test_statistic = FactoryBot.create(:project_statistic,
-                                     project_id: test_project.id,
-                                     project_name: test_project.name)
+  test_statistic = FactoryBot.create(:project_statistic)
 
   # Test various conditions
   it "is valid with valid attributes" do

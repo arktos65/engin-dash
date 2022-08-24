@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Role, type: :model do
   # Create data objects for testing
-  test_user = FactoryBot.create(:user)
-  test_department = FactoryBot.create(:department, user_id: test_user.id)
-  test_role = FactoryBot.create(:role, department_id: test_department.id)
+  test_role = FactoryBot.create(:role)
 
   # Test various conditions
   it "is valid with valid attributes" do
