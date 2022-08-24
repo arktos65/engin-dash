@@ -1,0 +1,28 @@
+# The Jira integration configuration settings for the EngIn application.
+jira:
+  # Configuration settings.  As a best practice, use environment variables, which should be set
+  # within the application container.  Do not store these settings in your code repository.
+  site: <%= ENV("JIRA_SITE") %>
+  context: <%= ENV("JIRA_CONTEXT") %>
+  user: <%= ENV("JIRA_USER") %>
+  api_key: <%= ENV("JIRA_API_KEY") %>
+
+  # Recognized values for these Jira fields
+  issue_types: [ "Story", "Bug", "Research", "Chore", "Epic" ]
+  statuses: [ "Created", "Open", "Won't Do", "Triage", "Refined", "Ready to Estimate", "In Progress",
+              "Closed", "Release Engineering" ]
+
+  # Values used for various filters and groupings
+  story_types: ["Story"]
+  bug_types: ["Bug"]
+  task_types: ["Research", "Chore"]
+  open_status: ["Created", "Open", "Triage", "Refined", "Ready to Estimate", "In Progress", "Release Engineering"]
+  closed_status: ["Closed"]
+  dropped_status: ["Won't Do"]
+  capex_types: ["Story"]
+  opex_types: ["Bug", "Research", "Chore"]
+
+  # Jira API Settings
+  max_results: 50
+  fields:
+    story_points: "customfield_10103"
