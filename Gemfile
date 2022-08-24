@@ -26,8 +26,10 @@ gem 'sidekiq-scheduler', '~> 4.0', '>= 4.0.2'
 gem 'devise', '~> 4.8', '>= 4.8.1'
 # Admin view framework
 gem 'trestle'
-# HTTP connector library
-gem 'faraday'
+# HTTP connector libraries
+gem 'faraday', '~> 2.5', '>= 2.5.2'
+gem 'faraday-httpclient', '~> 2.0', '>= 2.0.1'
+gem 'faraday-retry'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

@@ -1,6 +1,5 @@
 ---
 product_board:
   api:
-    key: <%=ENV("PRODUCTBOARD_API_KEY") %>
-    url: <%=ENV("PRODUCTBOARD_API_URL") %>
+    token: "<%=ENV('PRODUCTBOARD_API_KEY') %>"
     
