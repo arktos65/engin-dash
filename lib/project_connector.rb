@@ -5,7 +5,7 @@
 # to access the instance of your Jira API.
 module ProjectConnector
   # Load application configuration when this object is instantiated
-  raw_config = File.read("#{Rails.root}/config/engin.yml")
+  raw_config = File.read("#{Rails.root}/config/engin-jira.yml")
   ENGIN_CONFIG = YAML.load(raw_config)
 
   # For security reasons, the values for the connect options should be stored
