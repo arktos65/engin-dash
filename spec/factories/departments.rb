@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :department do
     name { Faker::Name.name }
     division { Faker::Business.name }
-    user_id { nil }
+    user
   end
 end

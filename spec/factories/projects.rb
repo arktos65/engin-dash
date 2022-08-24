@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :project do
-    stream_id { nil }
+    stream
     name { Faker::App.name }
     is_internal { false }
     is_trackable { true }

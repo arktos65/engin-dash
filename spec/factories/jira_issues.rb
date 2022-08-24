@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :jira_issue do
     jira_issue_id { Faker::Number.between(from: 1000, to: 9000) }
-    jira_project_id { nil }
+    jira_project
     issue_key { Faker::String.random(length: 3) + jira_issue_id.to_s }
     issue_url { Faker::Internet.url }
     issue_title { Faker::Lorem.words(number: 5) }
