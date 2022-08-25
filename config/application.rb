@@ -24,8 +24,6 @@ module EnginApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.eager_load_paths += %W(#{config.root}/lib)
-    # Load Sneat Bootstrap theme
-    config.eager_load_paths += %W(#{config.root}/vendor/assets/sneat-bootstrap)
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -40,5 +38,12 @@ module EnginApp
 
     # Enable Sidekiq for background automation and scheduling
     config.active_job.queue_adapter = :sidekiq
+
+    # Load EngIn application configuration
+    config.engin = config_for(:engin)
+    # Load Jira module configuration
+    config.jira = config_for(:jira)
+    # Load ProductBoard module configuration
+    config.productboard = config_for(:productboard)
   end
 end
