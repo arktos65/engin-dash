@@ -1,16 +1,21 @@
+require 'jira_server'
+
 namespace :loader do
-  desc "Update Jira tables from API"
+  include JiraServer
+  desc "Update Jira database tables from the JIRA API"
+
   task jira_projects: :environment do
-    include ProjectsLoader
-    update_all_projects
+    puts 'DEBUG: executing loader:jira_projects task' if Rails.configuration.engin['http_debug']
+    JiraServer::Projects.update_all
   end
 
   task jira_issues: :environment do
-    include IssuesLoader
-    update_all_issues
+    puts 'DEBUG: executing loader:jira_issues task' if Rails.configuration.engin['http_debug']
+    JiraServer::Issues.update_all
   end
 
   task jira_statistics: :environment do
+    puts 'DEBUG: executing loader:jira_statistics task' if Rails.configuration.engin['http_debug']
     include ProjectReporting
     process_jira_issues
   end
