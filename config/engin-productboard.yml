@@ -1,5 +1,0 @@
----
-product_board:
-  api:
-    token: "<%=ENV('PRODUCTBOARD_API_KEY') %>"
-    

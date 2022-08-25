@@ -1,0 +1,18 @@
+# Configuration settings for ProductBoard module.  As a best practice, use environment variables, which should be set
+# within the application container.  Do not store these settings in your code repository.
+#
+# We will be using a JWT token passed as a Bearer token in the Authorization header of each HTTP request.
+# The JWT encoded token should be referenced through ['api']['token'].
+default: &default
+  api:
+    token: "<%=ENV.fetch('PRODUCTBOARD_API_KEY') %>"
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
+    
