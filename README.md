@@ -11,8 +11,8 @@ development and test environments.
 The following prerequisites should be installed on your workstation before working on the
 EngIn app project:
 
-* Ruby Version Manager (http://www.rvm.io/)
-* MySQL Server CE (https://dev.mysql.com/downloads/)
+* [Ruby Version Manager](http://www.rvm.io/)
+* [MySQL Server CE](https://dev.mysql.com/downloads/)
 * MySQL Workbench (optional)
 * Docker Desktop (required to run Redis)
 * Editor or IDE (suggest RubyMine from JetBrains)
@@ -53,6 +53,9 @@ directory.  Then you change directory into the source code root directory and ru
 install all the required Ruby gems for the project.  The `Gemfile` provides the list of gems and
 version constraints to be installed.
 
+The application requires a number of shell environment variables to be defined.  You can learn more 
+about these variables in the [ENVIRONMENT.md](ENVIRONMENT.md) documentation.
+
 ### Preparing Bootstrap Template
 
 The next step is to install all of required libraries and dependencies for the Bootstrap template
@@ -62,7 +65,7 @@ used in this application:
     $ cd <root_directory>/vendor/assets/sneat-bootstrap
     $ yarn
 
-Read the `SNEAT_TEMPLATE.md` file for instructions on building and maintain the template within 
+Read the [SNEAT_TEMPLATE.md](SNEAT_TEMPLATE.md) file for instructions on building and maintain the template within 
 the project.
 
 ### Network local hosts
