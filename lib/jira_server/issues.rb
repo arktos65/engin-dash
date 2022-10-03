@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 require 'jira-ruby'
 
-# Module: ProjectsLoader
-# ETL processor that extracts project data from a Jira API, transforms the
+# Module: JiraServer::Issues
+# ETL processor that extracts project issues data from a Jira API, transforms the
 # data and stores in local database.
 module JiraServer
   class Issues

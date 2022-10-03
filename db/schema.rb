@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_03_185847) do
+ActiveRecord::Schema.define(version: 2022_10_03_161503) do
 
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -96,7 +96,9 @@ ActiveRecord::Schema.define(version: 2022_08_03_185847) do
     t.bigint "source_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "jira_account_id"
     t.index ["department_id"], name: "index_members_on_department_id"
+    t.index ["jira_account_id"], name: "index_members_on_jira_account_id"
     t.index ["role_id"], name: "index_members_on_role_id"
     t.index ["source_id"], name: "index_members_on_source_id"
   end
