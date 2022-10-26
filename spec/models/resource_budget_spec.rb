@@ -35,5 +35,17 @@ RSpec.describe ResourceBudget, type: :model do
       test_budget.base_rate = -5
       expect(test_budget).to_not be_valid
     end
+    it 'must have a weekly rate greater than zero' do
+      test_budget.weekly_rate = -5
+      expect(test_budget).to_not be_valid
+    end
+    it 'must have a monthly rate greater than zero' do
+      test_budget.monthly_rate = -5
+      expect(test_budget).to_not be_valid
+    end
+    it 'must have a annual rate greater than zero' do
+      test_budget.annual_rate = -5
+      expect(test_budget).to_not be_valid
+    end
   end
 end
