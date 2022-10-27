@@ -7,13 +7,14 @@ class ResourceBudget < ApplicationRecord
 
   # Validators
   validates_presence_of :member, :currency
-  validates_presence_of :base_rate, :fiscal_year
+  validates_presence_of :base_rate, :fiscal_year, :classification, :rate_type
   validates :base_rate, numericality: { greater_than_or_equal_to: 0 }
   validates :weekly_rate, numericality: { greater_than_or_equal_to: 0 }
   validates :monthly_rate, numericality: { greater_than_or_equal_to: 0 }
   validates :annual_rate, numericality: { greater_than_or_equal_to: 0 }
 
   enum classification:  [:salary, :contractor, :bonus]
+  enum rate_type: [:hourly, :daily, :weekly, :monthly, :annum]
 
   # Callback to calculate weekly, monthly, and annual rates before
   # saving the record.

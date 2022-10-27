@@ -17,6 +17,14 @@ RSpec.describe ResourceBudget, type: :model do
       test_budget.fiscal_year = nil
       expect(test_budget).to_not be_valid
     end
+    it 'is not valid without a classification' do
+      test_budget.classification = nil
+      expect(test_budget).to_not be_valid
+    end
+    it 'is not valid without a rate type' do
+      test_budget.rate_type = nil
+      expect(test_budget).to_not be_valid
+    end
   end
 
   context 'validating associations with other entities' do
