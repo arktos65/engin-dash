@@ -1,7 +1,7 @@
 namespace :import do
   require 'yaml'
 
-  desc "This utility allwos you to import YAML files to load various database tables."
+  desc "This utility allows you to import YAML files to load various database tables."
 
   # Import Departments
   # User provides an input file in YAML format that will load the departments table.
